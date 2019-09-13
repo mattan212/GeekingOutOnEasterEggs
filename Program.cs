@@ -21,7 +21,8 @@ namespace HiddenBinaryMessageDecryptor
 
         static void Main(string[] args)
         {
-            var apiKey = ConfigurationSettings.AppSettings["apiKey"];
+            //var apiKey = ConfigurationSettings.AppSettings["apiKey"];
+            var apiKey = "INSERT_YOUR_COMPUTER_VISION_API_KEY_HERE";
 
             var computerVision = new ComputerVisionClient(new ApiKeyServiceClientCredentials(apiKey))
             {
@@ -103,8 +104,6 @@ namespace HiddenBinaryMessageDecryptor
         {
             var numberOfCharsInOperationId = 36;
 
-            // Retrieve the URI where the recognized text will be
-            // stored from the Operation-Location header
             var operationId = operationLocation.Substring(operationLocation.Length - numberOfCharsInOperationId);
 
             var result = await computerVision.GetReadOperationResultAsync(operationId);
